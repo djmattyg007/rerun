@@ -68,6 +68,12 @@ def _print_list():
 	for cmd in sorted(commands.items()):
 		print('[%s] %s' % cmd)
 
+def runall():
+	for cmd in sorted(commands.items()):
+		print("[%s] %s" % cmd)
+		run(cmd[0])
+		print("")
+
 def loop():
 	if showListAlways == True:
 		_print_list()
@@ -83,6 +89,8 @@ def loop():
 		halp()
 	elif choice.startswith('/l'):
 		_print_list()
+	elif choice.startswith('/r'):
+		runall()
 	elif choice.startswith('/q'):
 		return False
 	elif not choice.strip():
