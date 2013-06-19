@@ -74,6 +74,8 @@ def halp():
 	print("(/a)dd [command]")
 	print("(/d)elete [key]")
 	print("(/h)elp")
+	print("(/l)ist")
+	print("(/r)unall")
 	print("(/q)uit")
 
 
