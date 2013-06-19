@@ -81,6 +81,8 @@ def loop():
 		copy(choice)
 	elif choice.startswith('/h'):
 		halp()
+	elif choice.startswith('/l'):
+		_print_list()
 	elif choice.startswith('/q'):
 		return False
 	elif not choice.strip():
