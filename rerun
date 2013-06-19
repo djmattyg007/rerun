@@ -6,6 +6,8 @@ from string import ascii_lowercase, ascii_uppercase
 
 readline.parse_and_bind("tab: complete")
 commands = {}
+showReturnStatus = False
+showListAlways = False
 
 def _get_key():
 	used = commands.keys()
@@ -21,8 +23,12 @@ def run(key):
 	try:
 		subprocess.check_call(commands[key], shell=True, stdout=sys.stdout, stderr=sys.stderr)
 	except subprocess.CalledProcessError:
+		if showReturnStatus == True:
+			print("Return status code was non-zero.")
 		return False
 
+	if showReturnStatus == True:
+		print("Return status code was zero.")
 	return True
 
 def add(choice):
@@ -63,7 +69,8 @@ def _print_list():
 		print('[%s] %s' % cmd)
 
 def loop():
-	_print_list()
+	if showListAlways == True:
+		_print_list()
 	choice = input('> ')
 
 	if choice.startswith('/d'):
@@ -87,6 +94,13 @@ def loop():
 
 
 if __name__ == '__main__':
+	if len(sys.argv) > 1:
+		for x in range(1, len(sys.argv)):
+			if sys.argv[x] == "-r":
+				showReturnStatus = True
+			elif sys.argv[x] == "-l":
+				showListAlways = True
+
 	try:
 		while loop():
 			pass
