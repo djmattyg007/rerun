@@ -2,7 +2,7 @@
 
 import sys, subprocess
 import readline
-from string import lowercase, uppercase
+from string import ascii_lowercase, ascii_uppercase
 
 readline.parse_and_bind("tab: complete")
 commands = {}
@@ -10,7 +10,7 @@ commands = {}
 def _get_key():
     used = commands.keys()
 
-    for c in lowercase + uppercase:
+    for c in ascii_lowercase + ascii_uppercase:
         if c not in used:
             return c
 
@@ -31,7 +31,7 @@ def add(choice):
     if len(parts) > 1:
         cmd = parts[-1]
     else:
-        cmd = raw_input('Enter command: ')
+        cmd = input('Enter command: ')
 
     if cmd not in commands.values():
         commands[_get_key()] = cmd
@@ -42,7 +42,7 @@ def delete(choice):
     if len(parts) > 1:
         key = parts[-1]
     else:
-        key = raw_input('Which command? ')
+        key = input('Which command? ')
 
     del commands[key]
 
@@ -51,20 +51,20 @@ def copy():
     pass
 
 def halp():
-    print "(/a)dd [command]"
-    print "(/d)elete [key]"
-    print "(/h)elp"
-    print "(/q)uit"
+    print("(/a)dd [command]")
+    print("(/d)elete [key]")
+    print("(/h)elp")
+    print("(/q)uit")
 
 
 def _print_list():
     print
     for cmd in sorted(commands.items()):
-        print '[%s] %s' % cmd
+        print('[%s] %s' % cmd)
 
 def loop():
     _print_list()
-    choice = raw_input('> ')
+    choice = input('> ')
 
     if choice.startswith('/d'):
         delete(choice)
@@ -81,7 +81,7 @@ def loop():
     elif choice in commands.keys():
         run(choice)
     else:
-        print 'Derp?'
+        print('Derp?')
 
     return True
 
