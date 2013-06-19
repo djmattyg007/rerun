@@ -96,6 +96,6 @@ Use /quit or `Ctrl-D` to exit.
 Other Information
 -----------------
 
-* Source (Git): <http://github.com/sjl/rerun/>
+* Source (Git): <https://github.com/djmattyg007/rerun/>
 * License: MIT/X11
-* Issues: <http://github.com/djmattyg007/rerun/issues/>
+* Issues: <https://github.com/djmattyg007/rerun/issues/>
