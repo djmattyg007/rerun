@@ -53,8 +53,7 @@ def add(choice):
 	else:
 		cmd = input('Enter command: ')
 
-	if cmd not in commands.values():
-		commands[_get_key()] = cmd
+	commands[_get_key()] = cmd
 
 def delete(choice):
 	parts = choice.split(' ', 1)
