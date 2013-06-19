@@ -8,6 +8,15 @@ readline.parse_and_bind("tab: complete")
 commands = {}
 showReturnStatus = False
 showListAlways = False
+useColour = False
+
+def printColour(colour, msg):
+	if colour == "red":
+		print("\033[91m" + msg + "\033[0m")
+	elif colour == "green":
+		print("\033[92m" + msg + "\033[0m")
+	else:
+		print(msg)
 
 def _get_key():
 	used = commands.keys()
@@ -18,17 +27,22 @@ def _get_key():
 
 	return None
 
-
 def run(key):
 	try:
 		subprocess.check_call(commands[key], shell=True, stdout=sys.stdout, stderr=sys.stderr)
 	except subprocess.CalledProcessError:
 		if showReturnStatus == True:
-			print("Return status code was non-zero.")
+			if useColour == True:
+				printColour("red", "Return status code was non-zero.")
+			else:
+				print("Return status code was non-zero.")
 		return False
 
 	if showReturnStatus == True:
-		print("Return status code was zero.")
+		if useColour == True:
+			printColour("green", "Return status code was zero.")
+		else:
+			print("Return status code was zero.")
 	return True
 
 def add(choice):
@@ -110,6 +124,8 @@ if __name__ == '__main__':
 				showReturnStatus = True
 			elif sys.argv[x] == "-l":
 				showListAlways = True
+			elif sys.argv[x] == "-c":
+				useColour = True
 
 	try:
 		while loop():
