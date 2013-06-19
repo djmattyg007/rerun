@@ -58,7 +58,7 @@ def halp():
 
 
 def _print_list():
-	print
+	print("")
 	for cmd in sorted(commands.items()):
 		print('[%s] %s' % cmd)
 
