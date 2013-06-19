@@ -61,6 +61,8 @@ def delete(choice):
 	if len(parts) > 1:
 		key = parts[-1]
 	else:
+		if showListAlways == False:
+			_print_list()
 		key = input('Which command? ')
 
 	del commands[key]
