@@ -45,6 +45,15 @@ def run(key):
 			print("Return status code was zero.")
 	return True
 
+def edit(choice):
+	parts = choice.split(" ", 1)
+	if parts[-1] not in commands.keys():
+		print("Selected command doesn't exist")
+		return False
+
+	value = input("Enter new command: ")
+	commands[parts[-1]] = value
+
 def add(choice):
 	parts = choice.split(" ", 1)
 
@@ -102,6 +111,8 @@ def loop():
 		add(choice)
 	elif choice.startswith("/c"):
 		copy(choice)
+	elif choice.startswith("/e"):
+		edit(choice)
 	elif choice.startswith("/h"):
 		halp()
 	elif choice.startswith("/l"):
