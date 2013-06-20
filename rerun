@@ -76,9 +76,13 @@ def delete(choice):
 
 	del commands[key]
 
-def copy():
-	# TODO
-	pass
+def copy(choice):
+	parts = choice.split(" ", 1)
+	if parts[-1] not in commands.keys():
+		print("Selected command doesn't exist")
+		return False
+
+	commands[_get_key()] = commands[parts[-1]]
 
 def halp():
 	print("(/a)dd [command]")
