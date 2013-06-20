@@ -86,7 +86,9 @@ def copy(choice):
 
 def halp():
 	print("(/a)dd [command]")
+	print("(/c)opy [key]")
 	print("(/d)elete [key]")
+	print("(/e)dit [key]")
 	print("(/h)elp")
 	print("(/l)ist")
 	print("(/r)unall")
